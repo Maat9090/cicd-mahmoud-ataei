@@ -1,18 +1,23 @@
 {
-  "name": "frontend-project",
+  "name": "backend-tests",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "cypress open",
-    "test:report:regression":"cypress run --spec cypress/integration/regression-suite.spec.js --reporter mochawesome",
-    "test:report:vrt":"cypress run --spec cypress/integration/vrt.spec.js --reporter mochawesome"
+    "test:report": "cypress run --reporter mochawesome",
+    "test:merge:json": "mochawesome-merge cypress/report/mochawesome-report/*.json > cypress/report/output.json",
+    "test:final:report": "marge cypress/report/output.json --reportDir  cypress/report/ --inline",
+    "gen:merg:report": "rm cypress/report/ -Rf &&  npm run test:report && npm run test:merge:json && npm run test:final:report"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "cypress": "^4.9.0"
+  },
   "dependencies": {
-    "cypress": "^4.7.0",
+    "faker": "^4.1.0",
     "mocha": "^5.2.0",
     "mochawesome": "^6.1.1",
     "mochawesome-merge": "^4.1.0"
