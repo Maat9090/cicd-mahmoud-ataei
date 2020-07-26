@@ -32,6 +32,7 @@ describe('testing auth-2', function(){
     }) 
 
    */
+
    it ('Get all reservations', function(){
       reservationHelpers.getAllReservationsRequest(cy)
    })
