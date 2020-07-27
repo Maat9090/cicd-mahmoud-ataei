@@ -15,7 +15,8 @@ stages {
             steps {
                sh '''
                     cd frontend-project/
-                    npm install && npm run test:report:regression                   
+                    npm install && npm run test:report:regression 
+                    
                 ''' 
                 archiveArtifacts allowEmptyArchive: true, artifacts: 'frontend-project/cypress/videos/**'
                 publishHTML([
@@ -31,12 +32,14 @@ stages {
         }
         stage('Backend tests') {
             steps {
-                  sh '''
-                   cd  backend-project/
-                 npm install &&  npm run test:report
+                 
+                     sh '''
+                    cd  backend-project/
+                    npm install &&  npm run  test &&  npm run  test:report  && npm run gen:merg:report &&  npm run test:final:report &&  npm run gen:merg:report
                 
-                ''' 
+                     ''' 
 
+                    archiveArtifacts allowEmptyArchive: true, artifacts: 'backend-project/cypress/videos/**'
                     publishHTML([
                     allowMissing: false, 
                     alwaysLinkToLastBuild: false, 
@@ -51,10 +54,10 @@ stages {
             }
         }
         
-        stage('Performace tests') {
+        
            stage('Performance tests') {
             steps {
-                sh '''
+               sh '''
                     cd performance-tests/
                     rm test1.csv -Rf && rm html-reports/ -Rf
                     jmeter -n -t login-logout.jmx -l test1.csv -e -o html-reports/
@@ -69,9 +72,9 @@ stages {
                     reportTitles: ''
                 ])
             }
-        }
-        }
+        
         
         
     }
+}    
 }
