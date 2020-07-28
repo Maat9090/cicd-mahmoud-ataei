@@ -23,7 +23,7 @@ stages {
                     allowMissing: false, 
                     alwaysLinkToLastBuild: false, 
                     keepAll: false, 
-                    reportDir: 'frontend-project/mochawesome-report', 
+                    reportDir: 'frontend-project /mochawesome-report', 
                     reportFiles: 'mochawesome.html', 
                     reportName: 'Frontend report', 
                     reportTitles: ''
@@ -35,7 +35,7 @@ stages {
                  
                      sh '''
                     cd  backend-project/
-                    npm install &&  npm run  test &&  npm run  test:report  && npm run gen:merg:report &&  npm run test:final:report &&  npm run gen:merg:report
+                    npm install  &&  npm run  test:report  && npm run gen:merg:report
                 
                      ''' 
 
@@ -44,8 +44,8 @@ stages {
                     allowMissing: false, 
                     alwaysLinkToLastBuild: false, 
                     keepAll: false, 
-                    reportDir: 'backend-project/mochawesome-report', 
-                    reportFiles: 'mochawesome.html', 
+                    reportDir: 'backend-project/cypress / report ', 
+                    reportFiles: 'output.html', 
                     reportName: 'Backend report', 
                     reportTitles: ''
                 ])

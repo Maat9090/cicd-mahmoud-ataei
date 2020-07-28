@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "cypress open",
-    "test:report:regression":"cypress run --spec cypress/integration/regression-suite.spec.js --reporter mochawesome",
-    "test:report:vrt":"cypress run --spec cypress/integration/vrt.spec.js --reporter mochawesome"
+    "test:report:regression": "cypress run --spec cypress/integration/regression-suite.spec.js --reporter mochawesome",
+    "test:report:vrt": "cypress run --spec cypress/integration/vrt.spec.js --reporter mochawesome"
   },
   "keywords": [],
   "author": "",
